@@ -27,7 +27,7 @@ const Page = () => {
   const [rotData, setRotData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [gmax, setGmax] = useState(500);
   const [fixAspect, setFixAspect] = useState(true);
-  const [ratio, setRatio] = useState(1);
+  const [ratio, setRatio] = useState(4);
 
   const [chartData, setChartData] = useState({
     labels: [],

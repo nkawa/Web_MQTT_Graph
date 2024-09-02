@@ -27,7 +27,7 @@ const Page = () => {
             <Row>
               {" "}
               <Col>
-                <Table border={4} data-bs-theme="light" stripped size="md">
+                <Table border={4} data-bs-theme="light" size="md">
                   <thead>
                     <tr>
                       <td>Setting Key</td>
