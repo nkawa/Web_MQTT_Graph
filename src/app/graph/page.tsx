@@ -28,6 +28,7 @@ const Page = () => {
   const [gmax, setGmax] = useState(500);
   const [fixAspect, setFixAspect] = useState(true);
   const [ratio, setRatio] = useState(4);
+  const [redraw, setRedraw] = useState(false);
 
   const [chartData, setChartData] = useState({
     labels: [],
@@ -244,6 +245,15 @@ const Page = () => {
     });
   }, []);
 
+  const destroyCharts = () => {
+    console.log("Destroy!", redraw);
+    setRedraw(true);
+  };
+
+  useEffect(() => {
+    setRedraw(false);
+  }, [redraw]);
+
   return (
     <div>
       <TopNavi />
@@ -253,21 +263,29 @@ const Page = () => {
             <Row>
               <Col>
                 <Form.Label>GraphLength</Form.Label>
-                {"   :" + gmax + "         fixAspect: "}
+                {"   :" + gmax}
+                {/*} + "         fixAspect: "}
                 <input
                   className="form-check-input"
                   type="checkbox"
                   onClick={() => {
-                    setFixAspect((v) => !v);
+                    setFixAspect((v) => {
+                      console.log("Fix:", v);
+                      destroyCharts();
+                      return !v;
+                    });
                   }}
-                />
+                />*/}
                 {"  　 "}Ratio:
                 <input
                   type="range"
                   min={1}
                   max={10}
                   value={ratio}
-                  onChange={(e) => setRatio(e.target.value)}
+                  onChange={(e) => {
+                    setRatio(e.target.value);
+                    destroyCharts();
+                  }}
                 />
                 {":" + ratio}
                 <Form.Range
@@ -281,6 +299,7 @@ const Page = () => {
             <Row>
               <Col style={{ height: "40vh" }}>
                 <LineChart
+                  redraw={redraw}
                   data={chartData}
                   title="RawAngle"
                   fixAspect={fixAspect}
@@ -291,6 +310,7 @@ const Page = () => {
             <Row>
               <Col style={{ height: "40vh" }}>
                 <LineChart
+                  redraw={redraw}
                   data={difData}
                   title="Velocity"
                   fixAspect={fixAspect}
@@ -301,6 +321,7 @@ const Page = () => {
             <Row>
               <Col style={{ height: "40vh" }}>
                 <LineChart
+                  redraw={redraw}
                   data={drvData}
                   title="Accel"
                   fixAspect={fixAspect}

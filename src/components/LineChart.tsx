@@ -23,10 +23,10 @@ ChartJS.register(
 );
 
 const LineChart = (props) => {
-  const { data, title, style, fixAspect, ratio } = props;
+  const { data, title, style, fixAspect, ratio, redraw } = props;
   const options = {
     responsive: true,
-    maitainAspectRatio: fixAspect,
+    //    maitainAspectRatio: fixAspect,
     aspectRatio: ratio,
     plugins: {
       legend: {
@@ -45,7 +45,7 @@ const LineChart = (props) => {
     },
   };
 
-  return <Line options={options} data={data} style={style} />;
+  return <Line options={options} data={data} style={style} redraw={redraw} />;
 };
 
 export default LineChart;
