@@ -42,6 +42,9 @@ const LineChart = (props) => {
       point: {
         radius: 1,
       },
+      line: {
+        borderWidth: 1,
+      },
     },
   };
 

@@ -49,7 +49,7 @@ export const subscribe = (topic, callback) => {
             if (error) {
                 console.log("subscribe error on", topic)
             } else {
-                console.log(`Granted ${granted}`)
+                console.log("Granted:",granted)
                 //    console.log(`Granted ${granted[0].topic}`)
                 mqttclient.on("message", (tpc, payload, packet) => {
                     if (topic == tpc) {
