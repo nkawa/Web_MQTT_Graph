@@ -7,7 +7,7 @@ export default (props) => {
   const ver = "0.1.0";
   //  const ver = process.env.npm_package_version;
   return (
-    <Navbar bg="primary" className="bg-body-tertiary" expand="sm">
+    <Navbar bg="primary" className="bg-body-tertiary p-0" expand="sm">
       <Container>
         <Navbar.Brand href="/"> MQGraph {ver} </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
