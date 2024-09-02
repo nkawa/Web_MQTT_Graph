@@ -43,7 +43,7 @@ export const connectMQTT = (server,name, connectCallback) => {
 }
 
 export const subscribe = (topic, callback) => {
-    console.log("SubScribe topic!", topic, callback)
+    console.log("SubScribe topic!", topic)
     if (mqttclient != null) {
         mqttclient.subscribe(topic, { qos: 0 }, function (error, granted) {
             if (error) {
