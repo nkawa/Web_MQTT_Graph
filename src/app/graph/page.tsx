@@ -19,6 +19,7 @@ import { getMaxListeners } from "events";
 
 const Page = () => {
   let mqserv, mqtopic;
+  const mqCon = useRef(false);
   if (typeof window !== "undefined") {
     mqserv = localStorage.getItem("mqtt_server");
     mqtopic = localStorage.getItem("mqtt_topic");
@@ -236,6 +237,8 @@ const Page = () => {
 
   // connect MQTT
   useEffect(() => {
+    if (mqCon.current) return;
+    mqCon.current = true;
     connectMQTT(mqserv, "MQGraph", () => {
       subscribe(mqtopic, handleMsg);
     });
